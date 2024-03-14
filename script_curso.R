@@ -469,6 +469,40 @@ save("xxxx.RData")
 save.image("xxxxxx.RData")
 
 
+# Distintos ejemplos añadiendo argumentos a la función, en este caso mi base de datos se llama ariquality
+
+write.table(x=airquality, file = "C:/Users/FGM/Desktop/air_exportado.txt")
+write.table(x=airquality, file = "C:/Users/FGM/Desktop/air_exportado.txt",quote=FALSE, row.names=FALSE)
+write.table(x=airquality, file = "C:/Users/FGM/Desktop/air_exportado.txt",quote=FALSE, row.names=FALSE,sep="\t")
+write.table(x=airquality, file = "C:/Users/FGM/Desktop/air_exportado.txt",quote=FALSE, row.names=FALSE,sep="\t",na = "NO ESTÁ")
+
+
+
+#En el caso de exportar a Stata, SAS, SPSS o excel, instalar el paquete y cargarlo para acceder a la ayuda y a sus funciones.
+
+#install.packages("foreign")
+#install.packages("openxlsx")
+
+library("foreign")
+library("openxlsx")
+
+Excel
+write.xlsx(x=datos, file= "C:/Users/FGM/Desktop/fichero_excel.xlsx")
+
+#STATA
+save.dta13(data=datos.curso1, file="C:/Users/FGM/Desktop/datos_stata.dta")
+
+#Varios objetos
+save(tabla, airquality, file=""C:/Users/FGM/Desktop/objetos.RData")
+
+#Workspace
+save.image(file="C:/Users/FGM/Desktop/todo.RData")
+
+
+
+
+
+
 
 
 
