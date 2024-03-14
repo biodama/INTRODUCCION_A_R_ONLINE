@@ -136,6 +136,37 @@ str(datos)
 
 # datos [ FILAS  , COLUMNAS  ]
 
+# Subsets
+
+criterio <- c(1,2,3)
+datos_nuevos <- datos[ criterio , ]
+
+criterio <- datos$"sexo"=="Mujer"
+datos_mujeres1 <- datos[ criterio ,  ]
+
+# Recodificaciones
+
+datos.new$"sexo"[2]
+datos.new$"sexo"[2] <- "Hombre"
+datos.new$"sexo"[c(2,4,5,6)]<-"DIOS MIO DE MI VIDA"
+
+criterio_id <- datos.new$"ID"==c(200)
+datos[criterio_id , "sexo" ]<- "Mujer"
+
+
+# Cargar un workspace
+
+load("workspace.RData")
+
+# Importar un archivo txt, csv, xlsx,dta...
+
+datos_importados <- read.table()
+datos_importados <- read.csv()
+
+library(openxlsx)
+datos_importados <- read.xlsx()
+
+
 
  
 datos [  c(1,2) ,    ]
@@ -299,15 +330,143 @@ library("openxlsx")
 tabla_xlsx <- openxlsx::read.xlsx(xlsxFile ="/Users/pfernandezn/Desktop/INTRODUCCION_A_R_ONLINE-main/datos/datos.curso1.xlsx", sheet=1)
 
 
+names(datos)
+names(datos)[c(3)]
+names(datos)[c(3)]<-"sex"
+
+nombres.variables<-names(datos)
+
+names(datos)=="sexo"
+names(datos)[names(datos)=="sexo"]<-"sexo"
+
+criterio<-names(datos)=="sexo"
+names(datos)[criterio]<-"sexo"
+
+# Cuando hagais subsets 
+datos_mujeres<-datos[datos$"sexo"=="Mujer" ,  ]
+row.names(datos_mujeres)
+row.names(datos_mujeres)<-NULL
+row.names(datos_mujeres)
 
 
+# Visualizacion
+
+head(datos,n=3)
+datos[c(1:3),c("ID","sexo")]
+head(datos[,c(1:8)],n=3)
+
+tail(datos,n=10)
+
+fix(datos) # NO LO UTILIZO
+View(datos) # NO LO UTILIZO AUNQUE NO ESTA MAL
 
 
+# Operaciones aritmeticas
 
+class(datos$"peso")
+class(datos$"altura")
+
+range(datos$"peso")
+range(datos$"altura")
+
+datos$"ratio" <- NA
+head(datos)
+
+datos$"ratio" <- datos$"peso" / datos$"altura"
+head(datos)
   
-  
+datos$"peso_new"<-datos$"peso"/sqrt(2)  
 
 
+# Operaciones logicas
+
+< 
+> 
+<= 
+>= 
+== 
+!=
+
+criterio<- datos$"peso">=70 
+datos_pesados <- datos[criterio ,  ]  
+
+
+ids_buscar<-c(1,40,137,3000)
+length(ids_buscar)
+intersect(datos$"ID",ids_buscar)
+length(intersect(datos$"ID",ids_buscar))
+
+# Repetidos
+length(datos$"ID")
+length(unique(datos$"ID"))
+table(datos$"ID")>1
+
+
+# Secuencias no aleatorias seq y rep
+
+x <- c(1,2,3,4)
+x <- c(1:4)
+
+x <- seq(from = 1, to = 4, by=1)
+x <- seq(1, 4, 1)
+
+y<-c(1,1,1,1,1)
+y <-rep(x=1,times=5)
+z<-c(rep(1,5),rep(2,100))
+
+ccaa <- c(rep("Andalucia",100),rep("Canarias",50))
+
+
+# Missing
+
+datos$"peso"==NA    # NUNCAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+datos$peso[datos$"peso"==NA]<- 1  # NUNCAAAAAAAAAAAA
+
+datos[datos$"peso"==NA, c("peso")]<- 1 # NUNCAAAAAAAAAAAA
+
+
+class(datos$"peso")
+length(datos$"peso")
+
+# is.na(datos$"peso")
+# which(is.na(datos$"peso"))
+sum(is.na(datos$"peso"))
+
+
+datos$"sexo"[c(1,2,3)]<-NA
+
+sum(is.na(datos$"sexo"))
+which(is.na(datos$"sexo"))
+
+datos$"sexo"[is.na(datos$"sexo")]<-"NO LO SE"
+
+criterio<-is.na(datos$"sexo")
+datos$"sexo"[criterio]<-"NO LO SE"
+
+
+# Ordenacion
+
+sort(datos$"ID")  # Para visualizar
+sort(datos$"ID",decreasing=T)
+
+
+datos_ordenados <- datos[order(datos$"ID",decreasing=T) , ]
+row.names(datos_ordenados)<-NULL  # Cada vez que ordeneis
+
+
+datos_ordenados<-datos[order(datos$"estado.civil",datos$"edad"),]
+row.names(datos_ordenados)<-NULL
+head(datos_ordenados)
+
+# Exportacion
+
+write.table(        )
+write.csv()
+write.xlsx()
+
+save("xxxx.RData")
+save.image("xxxxxx.RData")
 
 
 
