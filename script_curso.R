@@ -1,6 +1,8 @@
 
 # SCRIPT DEL CURSO
 
+#R version 4.5.2 (2025-10-31 ucrt)
+
 # ayuda
 ?rnorm
 
@@ -8,6 +10,12 @@
 
 ?install.packages
 install.packages(pkgs="openxlsx")
+
+# Cargar paquetes adicionales para poder utilizar la ayuda y sus funciones
+library("openxlsx")
+
+# Una vez cargados los paquetes que vayamos a utilizar, vemos las versiones de los paquetes.
+sessionInfo
 
 # Listar nombres de objetos creados o importados
 
@@ -210,7 +218,8 @@ datos[ -c(15,20)  ,   ]
 datos[ -c(15,20)  ,   -c(3,5) ]
 
 # La manera de eliminar registros con una condicion logica
-indice <- which(datos$"sexo"=="Mujer")datos.nuevos <-datos[-indice, ] # esto es una base solo de hombres
+indice <- which(datos$"sexo"=="Mujer")
+datos.nuevos <-datos[-indice, ] # esto es una base solo de hombres
 
 # Visualizacion de datos
 
@@ -258,7 +267,9 @@ muj_cas_altas <- datos[ datos$"sexo"=="Mujer"  &  datos$"estado.civil"=="Casado"
 ID1 <-1:5
 ID2 <-c(1, 3, 7:10)
 
-union(ID1, ID2)intersect(ID1, ID2)setdiff(ID1, ID2)
+union(ID1, ID2)
+intersect(ID1, ID2)
+setdiff(ID1, ID2)
 setdiff(ID2, ID1)
 
 # Secuencias aleatorias
