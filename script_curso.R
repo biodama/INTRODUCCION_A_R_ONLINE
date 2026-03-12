@@ -315,3 +315,33 @@ muj_cas_altas_ordenada <- muj_cas_altas[order(muj_cas_altas$"study.level",muj_ca
 datos$"ID"[nchar(datos$ID)==3]
 
 
+####################################################
+# Repaso de importacion de datos contenidos en un paquete
+####################################################
+
+install.packages("airqualityES")
+
+library("airqualityES")
+
+data(package="airqualityES")
+
+data(airqES)
+
+head(airqES)
+
+
+####################################################
+# Exportacion de estos datos (hace una copia) a un fichero txt llamado
+# datos.contaminacion.txt con separacion de tabulacion entre columnas
+# y quitando comillas en los valores y los row.names del data.frame 
+# (que vienen por defecto)
+####################################################
+
+write.table(airqES,file="datos_contaminacion.txt",
+sep="\t",row.names=F,quote=F)
+
+
+
+
+
+
